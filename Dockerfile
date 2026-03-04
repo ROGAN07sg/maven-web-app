@@ -1,4 +1,5 @@
-FROM tomcat:latest
-MAINTAINER Vinod <vinod@scopeindia.org>
+FROM tomcat:9.0
+RUN rm -rf /usr/local/tomcat/webapps/*
+RUN target/*maven-web-app.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8080
-COPY target/maven-web-app.war /usr/local/tomcat/webapps/maven-web-app.war
+CMD ["catalina.sh", "run"]
